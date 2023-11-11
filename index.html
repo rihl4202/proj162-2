@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling in Virtual Reality</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="Balls.js"></script>
+    <script src="Move.js"></script>
+
+  </head>
+  <body>
+    <a-scene id="scene">
+
+    <!--Assets-->
+       <a-assets> 
+        <a-asset-item 
+        id = "pin"
+        src = "assets/bowling_pin/scene.gltf">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="target"
+        position= "0 0 30"
+        scale = "20 20 20"
+        ></a-entity>
+
+        <a-entity id="environment" environment="preset:checkerboard;skytype:gradient;lighting:point">
+        </a-entity>
+
+        <a-entity id="sound1" sound="src:#footstep;poolSize:2; autoplay:false;volume:4;loop:false"></a-entity>
+
+
+
+       <!--Camera and Cursor-->
+       <a-entity
+       id="camera"
+       camera
+       position="0 5 15"
+       wasd-controls
+       look-controls="pointerLockEnabled: false"        
+     >
+       ></a-entity>
+       <a-cursor></a-cursor>        
+     </a-entity>
+
+    <!--Bowling Balls-->
+    <a-entity balls></a-entity>
+
+    <!--Ground & Background-->
+    <a-plane
+    id="ground"
+    repeat="5 5"
+    position="0 1 0"
+    rotation="-90 0 0"
+    height="200"
+    width="200"
+    color="#558869"
+    static-body
+    visible="true"
+  >
+  </a-plane>
+
+  <a-plane
+  id="sky"
+  repeat="5 5"
+  position="0 0 -100"
+  height="9000"
+  width="9000"
+  color="#445372"
+  static-body
+  visible="true"
+>
+</a-plane>
+
+<!-- Pins -->
+<a-box position="0 2 -10" scale="10 10 10" gltf-model="#pin" static-body></a-box> 
+<a-box position="5 2 -10" scale="10 10 10" gltf-model="#pin" static-body></a-box> 
+<a-box position="2.5 2 -10" scale="10 10 10" gltf-model="#pin" static-body></a-box> 
+<a-box position="-2.5 2 -10" scale="10 10 10" gltf-model="#pin" static-body></a-box> 
+
+<a-box position="3.5 2 -8" scale="10 10 10" gltf-model="#pin" static-body></a-box> 
+<a-box position="1 2 -8" scale="10 10 10" gltf-model="#pin" static-body></a-box> 
+<a-box position="-1 2 -8" scale="10 10 10" gltf-model="#pin" static-body></a-box> 
+
+<a-box position="2 2 -6" scale="10 10 10" gltf-model="#pin" static-body></a-box> 
+<a-box position="0 2 -6" scale="10 10 10" gltf-model="#pin" static-body></a-box> 
+
+<a-box position="1 2 -4" scale="10 10 10" gltf-model="#pin" static-body></a-box> 
+
+    </a-scene>
+  </body>
+</html>
